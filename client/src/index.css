@@ -37,15 +37,10 @@
 ==========footer============= */
 
 .footer {
+  border:solid 2px black;
+  background-color: rgb(9, 4, 40);
+  height:140px;
   color: white;
-  padding: 25px;
-  background: #000000; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #434343,
-    #000000
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #434343, #000000);
 }
 
 .footer a {
@@ -103,4 +98,44 @@
 .product-link {
   text-decoration: none !important;
   color: black !important;
+}
+
+.card-add
+{
+  width:350px !important;
+  height:500px;
+  cursor: pointer;
+  overflow: hidden !important;
+  transition: all 0.5s ease;
+  box-shadow: rgba(117, 111, 111, 0.598) 2px 5px 8px;
+}
+
+.card-add:hover{
+  transform: scale(102%);
+  box-shadow: rgba(54, 50, 50, 0.395) 2px 5px 8px;
+}
+
+.card-i{
+  height:300px;
+  width:100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  overflow: hidden !important;
+}
+
+.card-i:hover{
+  transform: scale(120%);
+}
+
+.btn-card
+{
+  display: flex;
+  gap:10px;
+}
+
+.card-im
+{
+  width:350px;
+  overflow: hidden;
 }

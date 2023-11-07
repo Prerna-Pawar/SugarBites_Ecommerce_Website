@@ -61,12 +61,13 @@
   }
  
   .btn-l{
-    border-radius: 15px;
+    border-radius: 10px;
     font-size: 18px;
     background-color: rgba(0, 0, 0, 0.89);
     color: white;
     border: none;
     padding:8px 5px;
+    width:100%;
   }
 
   .btn-l:hover{
