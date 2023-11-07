@@ -35,16 +35,21 @@ const ForgotPasssword = () => {
   };
   return (
     <Layout title={"Forgot Password - Ecommerce APP"}>
-      <div className="form-container ">
+      <div className="d-flex outer">
+        <div className="login-page">
+        </div>
+        <div className="form-container ">
+        <h1 className="heading">Welcome back!!</h1>
         <form onSubmit={handleSubmit}>
-          <h4 className="title">RESET PASSWORD</h4>
+        <h4 className="title">Reset your password here</h4>
+          <p className="small">Already have an account? <a className="reg-link" href="">Login here</a></p>
 
           <div className="mb-3">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
+              className="form-c"
               id="exampleInputEmail1"
               placeholder="Enter Your Email "
               required
@@ -55,7 +60,7 @@ const ForgotPasssword = () => {
               type="text"
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
-              className="form-control"
+              className="form-c"
               id="exampleInputEmail1"
               placeholder="Enter Your favorite Sport Name "
               required
@@ -66,18 +71,21 @@ const ForgotPasssword = () => {
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="form-control"
+              className="form-c"
               id="exampleInputPassword1"
               placeholder="Enter Your Password"
               required
             />
           </div>
-
-          <button type="submit" className="btn btn-primary">
+          <div className="btn-c">
+           <button type="submit" className="btn-l">
             RESET
           </button>
+          </div>
         </form>
       </div>
+      </div>
+     
     </Layout>
   );
 };
