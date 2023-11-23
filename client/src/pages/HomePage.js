@@ -108,14 +108,15 @@ const HomePage = () => {
   return (
     <Layout title={"ALl Products - Best offers "}>
       <div>
-        <Slider/>
+        <Slider />
       </div>
       <div className="container-fluid row mt-3">
-        <div className="col-md-2">
+        <div className="filter col-md-2">
           <h4 className="text-center">Filter By Category</h4>
           <div className="d-flex flex-column">
             {categories?.map((c) => (
               <Checkbox
+                className="cat-size"
                 key={c._id}
                 onChange={(e) => handleFilter(e.target.checked, c._id)}
               >
@@ -123,20 +124,23 @@ const HomePage = () => {
               </Checkbox>
             ))}
           </div>
+          <hr className="line-1" />
           {/* price filter */}
           <h4 className="text-center mt-4">Filter By Price</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((p) => (
                 <div key={p._id}>
-                  <Radio value={p.array}>{p.name}</Radio>
+                  <Radio value={p.array} className="cat-size ">
+                    {p.name}
+                  </Radio>
                 </div>
               ))}
             </Radio.Group>
           </div>
           <div className="d-flex flex-column">
             <button
-              className="btn btn-danger"
+              className="btn mt-5 btn-danger"
               onClick={() => window.location.reload()}
             >
               RESET FILTERS
@@ -147,15 +151,19 @@ const HomePage = () => {
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap justify-content-center gap-2">
             {products?.map((p) => (
-              <div className="card m-2 card-add" style={{ width: "18rem" }} key={p._id}>
+              <div
+                className="card m-2 card-add"
+                style={{ width: "18rem" }}
+                key={p._id}
+              >
                 <div className="card-im">
-                   <img
-                  src={`/api/v1/product/product-photo/${p._id}`}
-                  className="card-i"
-                  alt={p.name}
-                />
+                  <img
+                    src={`/api/v1/product/product-photo/${p._id}`}
+                    className="card-i"
+                    alt={p.name}
+                  />
                 </div>
-               
+
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
                   <p className="card-text">
@@ -163,25 +171,25 @@ const HomePage = () => {
                   </p>
                   <p className="card-text"> $ {p.price}</p>
                   <div className="d-flex btn-card">
-                  <button
-                    className="btn-l"
-                    onClick={() => navigate(`/product/${p.slug}`)}
-                  >
-                    More Details
-                  </button>
-                  <button
-                    className="btn-l"
-                    onClick={() => {
-                      setCart([...cart, p]);
-                      localStorage.setItem(
-                        "cart",
-                        JSON.stringify([...cart, p])
-                      );
-                      toast.success("Item Added to cart");
-                    }}
-                  >
-                    ADD TO CART
-                  </button>
+                    <button
+                      className="btn-l"
+                      onClick={() => navigate(`/product/${p.slug}`)}
+                    >
+                      More Details
+                    </button>
+                    <button
+                      className="btn-l"
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, p])
+                        );
+                        toast.success("Item Added to cart");
+                      }}
+                    >
+                      ADD TO CART
+                    </button>
                   </div>
                 </div>
               </div>

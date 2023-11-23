@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
+import "../styles/AuthStyles.css";
 import { useParams, useNavigate } from "react-router-dom";
 const ProductDetails = () => {
   const params = useParams();
@@ -38,52 +39,56 @@ const ProductDetails = () => {
   return (
     <Layout>
       <div className="row container mt-2">
-        <div className="d-flex">
-           <div className="col-md-6">
-          <img
-            src={`/api/v1/product/product-photo/${product._id}`}
-            className="card-im"
-            alt={product.name}
-            height="300"
-            width={"350px"}
-          />
+        <div className="d-flex product-card">
+          <div className="pro-im">
+            <img
+              src={`/api/v1/product/product-photo/${product._id}`}
+              className="product-img"
+              alt={product.name}
+              height="300"
+              width={"350px"}
+            />
+          </div>
+          <div className="product-details">
+            <h1 className="head-p">Product Details</h1>
+            <h6>Name : {product.name}</h6>
+            <h6>Description : {product.description}</h6>
+            <h6>Price : {product.price}</h6>
+            <h6>Category : {product?.category?.name}</h6>
+            <button className="btn-add">ADD TO CART</button>
+          </div>
         </div>
-        <div className="col-md-6">
-          <h1 className="text-center">Product Details</h1>
-          <h6>Name : {product.name}</h6>
-          <h6>Description : {product.description}</h6>
-          <h6>Price : {product.price}</h6>
-          <h6>Category : {product?.category?.name}</h6>
-          <button className="btn-l">ADD TO CART</button>
-        </div>
-        </div>
-       
       </div>
       <hr />
       <div className="row container">
-        <h6>Similar Products</h6>
+        <h2>Similar Products</h2>
         {relatedProducts.length < 1 && (
           <p className="text-center">No Similar Products found</p>
         )}
-        <div className="d-flex flex-wrap">
+        <div className="d-flex col-12">
           {relatedProducts?.map((p) => (
-            <div className="card m-2" style={{ width: "18rem" }}>
-              <img
-                src={`/api/v1/product/product-photo/${p?._id}`}
-                className="card-img-top"
-                alt={p.name}
-              />
+            <div className="card card-add m-2" style={{ width: "18rem" }}>
+              <div className="card-im">
+                <img
+                  src={`/api/v1/product/product-photo/${p?._id}`}
+                  className="card-i"
+                  alt={p.name}
+                />
+              </div>
+
               <div className="card-body">
                 <h5 className="card-title">{p.name}</h5>
                 <p className="card-text">{p.description.substring(0, 30)}...</p>
                 <p className="card-text"> $ {p.price}</p>
-                <button
-                  className="btn btn-primary ms-1"
-                  onClick={() => navigate(`/product/${p.slug}`)}
-                >
-                  More Details
-                </button>
-                <button class="btn btn-secondary ms-1">ADD TO CART</button>
+                <div className="btn-card">
+                  <button
+                    className="btn-l"
+                    onClick={() => navigate(`/product/${p.slug}`)}
+                  >
+                    More Details
+                  </button>
+                  <button class="btn-l">ADD TO CART</button>
+                </div>
               </div>
             </div>
           ))}

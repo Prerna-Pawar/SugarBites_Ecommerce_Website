@@ -23,6 +23,8 @@ import ProductDetails from "./pages/ProductDetails";
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import CartPage from "./pages/CartPage";
+import Home from "./Home";
+import PaymentSuccess from "./PaymentSuccess";
 function App() {
   return (
     <>
@@ -53,6 +55,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<Pagenotfound />} />
+
+        <Route path="/home" element={<Home />} />
+        <Route path="/paymentsuccess" element={<PaymentSuccess />} />
       </Routes>
     </>
   );

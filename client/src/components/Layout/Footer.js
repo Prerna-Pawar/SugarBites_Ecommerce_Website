@@ -3,11 +3,27 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer">
-      <h1 className="text-center">All Right Reserved &copy; Techinfoyt</h1>
-      <p className="text-center mt-3">
-        <Link to="/about">About</Link>|<Link to="/contact">Contact</Link>|
-        <Link to="/policy">Privacy Policy</Link>
-      </p>
+      <div className="footer-data">
+        <img
+          className="footer-img"
+          src={require("../../images1/besan-laddoo.jpg")}
+        ></img>
+        <div className="d-flex links">
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/policy">Privacy Policy</Link>
+        </div>
+      </div>
+      <hr className="line" />
+      <div className="footer-text">
+        <div>@SugarBites | Founder:Nilam Mandhare</div>
+        <div className="social-media">
+          <a href="">INSTAGRAM</a>
+          <a href="">FACEBOOK</a>
+          <a href="">TWITTER</a>
+          <a href="">PINTEREST</a>
+        </div>
+      </div>
     </div>
   );
 };

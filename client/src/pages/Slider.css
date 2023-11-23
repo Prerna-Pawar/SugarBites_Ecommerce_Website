@@ -1,6 +1,7 @@
 .slider {
-    max-width:100vw;
-    height: 60vh;
+  width: 100%; /* Set a maximum width for the container */
+  height: auto; /* Allow the height to adjust proportionally */
+  object-fit: cover;
   }
 
   .slide-img{
