@@ -16,7 +16,7 @@ const Footer = () => {
       </div>
       <hr className="line" />
       <div className="footer-text">
-        <div>@SugarBites | Founder:Nilam Mandhare</div>
+        <div>@SugarBites | Founder:Sima Ghorpade</div>
         <div className="social-media">
           <a href="">INSTAGRAM</a>
           <a href="">FACEBOOK</a>

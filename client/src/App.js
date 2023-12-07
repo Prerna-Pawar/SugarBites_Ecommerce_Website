@@ -25,6 +25,7 @@ import CategoryProduct from "./pages/CategoryProduct";
 import CartPage from "./pages/CartPage";
 import Home from "./Home";
 import PaymentSuccess from "./PaymentSuccess";
+
 function App() {
   return (
     <>
@@ -39,6 +40,7 @@ function App() {
           <Route path="user" element={<Dashboard />} />
           <Route path="user/orders" element={<Orders />} />
           <Route path="user/profile" element={<Profile />} />
+          {/* <Route path="user/feedback" element={<Feedback />} /> */}
         </Route>
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />
