@@ -18,6 +18,12 @@ const UserMenu = () => {
           >
             Orders
           </NavLink>
+          <NavLink
+            to="/dashboard/user/feedback"
+            className="list-group-item list-group-item-action"
+          >
+            Submit Feedback
+          </NavLink>
         </div>
       </div>
     </div>

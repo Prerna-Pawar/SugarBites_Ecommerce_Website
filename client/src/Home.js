@@ -70,13 +70,16 @@ const Home = () => {
   // };
 
   const checkoutHandler = async (amount) => {
+    console.log(`http://localhost:8081/api/checkout/${amount?.amount}`);
+    const finalAmount = parseInt(parseInt(amount?.amount) / 10000);
+    console.log(amount, finalAmount);
     const {
       data: { key },
-    } = await axios.get("http://localhost:8080/api/getkey");
+    } = await axios.get("http://localhost:8081/api/getkey");
     console.log(key);
     const {
       data: { order },
-    } = await axios.post("http://localhost:8080/api/checkout", {
+    } = await axios.post(`http://localhost:8081/api/checkout/${finalAmount}`, {
       amount,
     });
 
@@ -88,7 +91,7 @@ const Home = () => {
       description: "Sweets and Snacks Venture",
       image: require("./images1/sweet-plate.jpg"),
       order_id: order.id,
-      callback_url: "http://localhost:8080/api/paymentVerification",
+      callback_url: "http://localhost:8081/api/paymentVerification",
       prefill: {
         name: "Gaurav Kumar",
         email: "gaurav.kumar@example.com",

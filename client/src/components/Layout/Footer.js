@@ -11,7 +11,6 @@ const Footer = () => {
         <div className="d-flex links">
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
-          <Link to="/policy">Privacy Policy</Link>
         </div>
       </div>
       <hr className="line" />

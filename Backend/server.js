@@ -1,5 +1,6 @@
 import express from "express";
 import colors from "colors";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
@@ -46,11 +47,45 @@ app.get("/", (req, res) => {
 });
 
 //PORT
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 export const instance = new Razorpay({
   key_id: process.env.RAZORPAY_API_KEY,
   key_secret: process.env.RAZORPAY_APT_SECRET,
+});
+
+const feedbackSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  feedback: String,
+});
+
+const Feedback = mongoose.model("Feedback", feedbackSchema);
+
+// Handle form submission
+app.post("/api/submit-feedback", async (req, res) => {
+  console.log("Received feedback:", req.body);
+
+  const { name, email, feedback } = req.body;
+
+  try {
+    await Feedback.create({ name, email, feedback });
+    console.log("Feedback saved successfully");
+    res.status(200).send("Feedback received! Thank you.");
+  } catch (error) {
+    console.error("Error saving feedback:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/api/get-feedbacks", async (req, res) => {
+  try {
+    const feedbacks = await Feedback.find();
+    res.status(200).json(feedbacks);
+  } catch (error) {
+    console.error("Error getting feedbacks:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 //run listen
